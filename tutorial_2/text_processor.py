@@ -10,7 +10,13 @@ import os
 import re
 
 
+# The directory for the processed text files.
+OUTPUT_DIR = os.path.join('./', 'raw')
+
+
 if __name__ == '__main__':
+    if not os.path.exists(OUTPUT_DIR):
+        os.makedirs(OUTPUT_DIR)
     errors = 0
     files = [
         filename for filename in os.listdir('.') if os.path.isfile(filename)]
