@@ -15,6 +15,7 @@ from datetime import datetime, timedelta
 from time import sleep
 import urllib2
 
+
 # Set up the start and end dates.
 start_date = "2005-01-24"
 end_date = "2005-01-27"
@@ -46,6 +47,7 @@ for current_date in date_range:
     file_name = "crec_" + request_type + "_" + requested_date + ".htm"
     with open(file_name, 'w') as output_file:
         output_file.write(gpo_data)
+    print "Data saved in file", file_name
 
     # Wait for 10 seconds.
     sleep(10)

@@ -14,6 +14,7 @@ Year-Month-Date
 import datetime
 import urllib2
 
+
 # Specify the type of document we're interested in.
 request_type = 'sadditional'
 
@@ -37,3 +38,4 @@ gpo_data = response.read()
 file_name = "crec_" + request_type + "_" + requested_date + ".htm"
 with open(file_name, 'w') as output_file:
     output_file.write(gpo_data)
+print "Data saved in file", file_name
