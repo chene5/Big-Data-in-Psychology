@@ -43,7 +43,7 @@ ACCESS_ATTEMPT_TIMEOUT = 30
 
 GPO_HOME = './'
 LOG_DIR = os.path.join(GPO_HOME, 'log')
-RAW_DIR = os.path.join(GPO_HOME, 'raw')
+RAW_DIR = os.path.join(GPO_HOME, 'htm')
 
 # where should the scraper log the files it's downloaded?
 RETRIEVER_LOG = os.path.join(LOG_DIR, 'retriever.log')
@@ -59,8 +59,6 @@ def http_backoff(attempt_count):
 
 def log_download_status(datestring, status, request_type=None):
     if request_type:
-        # XXX: Not implemented.
-        # log_name = 'scraper_' + request_type + '.log'
         pass
     if not os.path.exists(RETRIEVER_LOG):
         if not os.path.exists(LOG_DIR):
@@ -75,8 +73,6 @@ def log_download_status(datestring, status, request_type=None):
 
 def previously_retrieved(requested_date, request_type=None):
     if request_type:
-        # XXX: Not implemented.
-        # log_name = 'scraper_' + request_type + '.log'
         pass
     else:
         log_name = RETRIEVER_LOG
@@ -250,25 +246,6 @@ def get_type_in_range(request_type, start_date, end_date):
         print
 
 
-def create_date(year, month, day):
-    """
-    This function combines the year, month, and day,
-    divided by a "-" sign, into a single string object.
-    For example: 2014-01-15
-    This is the format that the GPO API (as well as Twitter,
-    and others) use.
-    """
-    requested_date = "{0}-{1:02d}-{2:02d}".format(year, month, day)
-    return requested_date
-
-
-def create_dailydigest_command(requested_date):
-    """This function creates a request that is formatted for the GPO API."""
-    command = "http://api.fdsys.gov/link?collection=crec&section=dailydigest"
-    command += "&publishdate=" + requested_date
-    return command
-
-
 def send_command(command):
     """This function sends the command to the API and downloads data."""
     # Set up the connection to the server.
@@ -284,18 +261,6 @@ def send_command(command):
     file_data = response.read()
 
     return file_data
-
-
-def save_file(file_data, requested_date):
-    """This function saves the data to a file."""
-    if not file_data:
-        print "... No data returned"
-        return
-
-    file_name = "crec_dd_" + requested_date + ".pdf"
-    with open(file_name, 'wb') as output_file:
-        output_file.write(file_data)
-    print "... Data saved in file", file_name
 
 
 def usage():
