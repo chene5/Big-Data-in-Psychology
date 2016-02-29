@@ -11,7 +11,7 @@ import re
 
 
 # The directory for the processed text files.
-OUTPUT_DIR = os.path.join('./', 'raw')
+OUTPUT_DIR = os.path.join('./', 'senate')
 
 
 if __name__ == '__main__':
@@ -32,7 +32,7 @@ if __name__ == '__main__':
             # This simple parser only parses .htm files.
             continue
             # base_filename = os.path.basename(filename)
-        saveas = os.path.join('./raw/', base_filename)
+        saveas = os.path.join(OUTPUT_DIR, base_filename)
         if not os.path.exists(saveas):
             # re.DOTALL is important - it tells 'dot' (.) to match newline.
             findraw = re.compile(
