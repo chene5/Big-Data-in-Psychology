@@ -13,6 +13,7 @@ Tutorial 3 covers support vector machine classification. The code files here imp
 #### Extras
 The extras directory contains the raw data retrieved in Tutorial 1.
 
+---
 
 ### Key resources
 #### Python
@@ -71,4 +72,5 @@ d3.js: https://d3js.org/
 
 graphviz: http://www.graphviz.org/
 
-#### Hadoop: http://hadoop.apache.org/
+#### Hadoop
+http://hadoop.apache.org/
